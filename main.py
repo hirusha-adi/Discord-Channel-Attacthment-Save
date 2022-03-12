@@ -1,6 +1,8 @@
 import os
 
 import discord
+import random
+from string import ascii_lowercase
 from discord.ext import commands
 
 client = commands.Bot(command_prefix=".")
@@ -33,8 +35,16 @@ async def save(ctx, limit=None):
             iter_2 = 1
             for attachment in all_attatchments:
                 try:
-                    await attachment.save(attachment.filename)
-                    print(f"+ Saved attachment: {iter}-{iter_2}")
+                    if str(attachment.filename) in os.getcwd():
+                        extension = str(attachment.filename).split(".")[-1]
+                        save_f_name = f"{attachment.filename}.{''.join(random.choice(ascii_lowercase) for x in range(4))}.{extension}"
+                    else:
+                        save_f_name = str(attachment.filename)
+
+                    await attachment.save(save_f_name)
+
+                    print(
+                        f"+ Saved attachment: {iter}-{iter_2} | {save_f_name}")
                 except Exception as e:
                     print(
                         f"! Failed to save attatchment {iter}-{iter_2}.\n! Error: {e}")
