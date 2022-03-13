@@ -1,31 +1,42 @@
 import os
+import random
+import sys
+from string import ascii_lowercase
 
 import discord
-import random
-from string import ascii_lowercase
 from discord.ext import commands
 
-client = commands.Bot(command_prefix=".")
+if ("prefix.txt" in os.listdir(os.getcwd())):
+    with open(os.path.join(os.getcwd(), "prefix.txt"), "w", encoding="utf-8") as prefixfile:
+        prefix = prefixfile.read()
+else:
+    prefix = '.'
+
+if ("token.txt" in os.listdir(os.getcwd())):
+    with open("token.txt", "r", encoding="utf-8") as tokenfile:
+        token = tokenfile.read()
+else:
+    token = None
+
+client = commands.Bot(command_prefix=prefix)
 
 
-@client.event
+@ client.event
 async def on_ready():
     print(
-        f"[+] Logged in!\n\tUsername: {client.user.name}\n\tID: {client.user.id}")
+        f"[+] Logged in!\n\tName: {client.user.name}\n\tID: {client.user.id}\n\tPrefix: {prefix}")
     print("[+] Bot is online and ready to be used!")
 
 
-@client.event
+@ client.event
 async def on_message(message):
     if client.user == message.author:
         return
     await client.process_commands(message)
 
 
-@client.command()
+@ client.command()
 async def save(ctx, limit=None):
-
-    # Default to 9999 messages check
     if limit == None:
         limit = 9999
 
@@ -70,8 +81,7 @@ async def save(ctx, limit=None):
         print(f"[-] Failed to run command\n[-] Error: {e}")
         await ctx.send(f"[+] Saved all attacthments and messages to ```{e}```")
 
-
-with open("token.txt", "r", encoding="utf-8") as tokenfile:
-    token = tokenfile.read()
-
-client.run(token)
+if token is None:
+    sys.exit("[-] Invalid bot token. Please refer the documentation")
+else:
+    client.run(token)
