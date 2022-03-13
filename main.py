@@ -3,6 +3,7 @@ import random
 import sys
 import json
 from string import ascii_lowercase
+from datetime import datetime
 
 import discord
 from discord.ext import commands
@@ -31,22 +32,43 @@ if datajson is None:
 
 client = commands.Bot(command_prefix=prefix)
 
+client.remove_command('help')
 
-@ client.event
+
+@client.event
 async def on_ready():
     print(
         f"[+] Logged in!\n\tName: {client.user.name}\n\tID: {client.user.id}\n\tPrefix: {prefix}")
     print("[+] Bot is online and ready to be used!")
 
 
-@ client.event
+@client.event
 async def on_message(message):
     if client.user == message.author:
         return
     await client.process_commands(message)
 
 
-@ client.command()
+@client.command()
+async def help(ctx):
+    print("[+] Invoked `help` command")
+    embed = discord.Embed(title="Discord Channel Saver",
+                          url="https://hirusha-adi.github.io/Discord-Channel-Attacthment-Save",
+                          description="Save all messages and attachments sent in a channel ",
+                          color=0x00e1ff,
+                          timestamp=datetime.utcnow()
+                          )
+    embed.set_author(name=f"{client.user.name}",
+                     url="http://hirusha.xyz",
+                     icon_url=f"{client.user.avatar_url}")
+    embed.add_field(name=f"{prefix}save [limit=9999]",
+                    value="Save all messages and attachments sent in the channel with the given limit. `limit` will default to 9999",
+                    inline=False)
+    embed.set_footer(text=f"Requested by {ctx.author.name}")
+    await ctx.send(embed=embed)
+
+
+@client.command()
 async def save(ctx, limit=None):
     if limit == None:
         limit = 9999
