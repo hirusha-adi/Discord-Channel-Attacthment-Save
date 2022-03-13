@@ -1,22 +1,33 @@
 import os
 import random
 import sys
+import json
 from string import ascii_lowercase
 
 import discord
 from discord.ext import commands
 
-if ("prefix.txt" in os.listdir(os.getcwd())):
-    with open(os.path.join(os.getcwd(), "prefix.txt"), "w", encoding="utf-8") as prefixfile:
-        prefix = prefixfile.read()
+if ("config.json" in os.listdir(os.getcwd())):
+    with open(os.path.join(os.getcwd(), "config.json"), "r", encoding="utf-8") as jsonfile:
+        datajson = json.load(jsonfile)
+        prefix = datajson["prefix"]
+        token = datajson["token"]
 else:
-    prefix = '.'
+    datajson = None
 
-if ("token.txt" in os.listdir(os.getcwd())):
-    with open("token.txt", "r", encoding="utf-8") as tokenfile:
-        token = tokenfile.read()
-else:
-    token = None
+if datajson is None:
+    if ("prefix.txt" in os.listdir(os.getcwd())):
+        with open(os.path.join(os.getcwd(), "prefix.txt"), "r", encoding="utf-8") as prefixfile:
+            prefix = prefixfile.read()
+    else:
+        prefix = '.'
+
+    if ("token.txt" in os.listdir(os.getcwd())):
+        with open("token.txt", "r", encoding="utf-8") as tokenfile:
+            token = tokenfile.read()
+    else:
+        token = None
+
 
 client = commands.Bot(command_prefix=prefix)
 
