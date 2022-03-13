@@ -10,7 +10,8 @@ client = commands.Bot(command_prefix=".")
 
 @client.event
 async def on_ready():
-    print(f"[+] Logged in as {client.user.name}")
+    print(
+        f"[+] Logged in!\n\tUsername: {client.user.name}\n\tID: {client.user.id}")
     print("[+] Bot is online and ready to be used!")
 
 
