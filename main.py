@@ -9,15 +9,16 @@ client = commands.Bot(command_prefix=".")
 
 
 @client.event
+async def on_ready():
+    print(f"[+] Logged in as {client.user.name}")
+    print("[+] Bot is online and ready to be used!")
+
+
+@client.event
 async def on_message(message):
     if client.user == message.author:
         return
     await client.process_commands(message)
-
-
-@client.event
-async def on_ready():
-    print("Bot is online")
 
 
 @client.command()
