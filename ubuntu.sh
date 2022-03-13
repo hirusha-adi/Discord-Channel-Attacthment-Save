@@ -1,7 +1,7 @@
 echo "Installing Dependencies"
-sudo apt install git python3 python3-pip -y
+sudo apt install git python3 python3-pip nano -y
 pip3 install discord -U
-echo "Installed git, python3, python3-pip with apt"
+echo "Installed git, nano, python3, python3-pip with apt"
 echo "Installed discord.py with pip3"
 git clone "https://github.com/hirusha-adi/Discord-Channel-Attacthment-Save.git"
 cd ./Discord-Channel-Attacthment-Save

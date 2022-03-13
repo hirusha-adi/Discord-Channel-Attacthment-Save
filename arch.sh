@@ -1,7 +1,7 @@
 echo "Installing Dependencies"
-sudo pacman -Syy install git python python-pip --noconfirm
+sudo pacman -Syy install git nano python python-pip --noconfirm
 pip install discord -U
-echo "Installed git, python, python-pip with apt"
+echo "Installed git, nano, python, python-pip with apt"
 echo "Installed discord.py with pip"
 git clone "https://github.com/hirusha-adi/Discord-Channel-Attacthment-Save.git"
 cd ./Discord-Channel-Attacthment-Save
