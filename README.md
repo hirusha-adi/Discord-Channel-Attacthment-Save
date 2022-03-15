@@ -1,6 +1,6 @@
-# Discord-Channel-Attacthment-Save
+# Discord Channel Saver
 
-Save all messages and attachments sent in a channel
+Save all messages and attachments sent in a channel using a simple discord bot
 
 # Available Commands
 
@@ -29,6 +29,15 @@ nano ./token.txt
 python main.py
 ```
 
+or run,
+
+```bash
+sudo pacman -Syy wget --noconfirm
+wget "https://raw.githubusercontent.com/hirusha-adi/Discord-Channel-Attacthment-Save/main/arch.sh"
+chmod +x ./arch.sh
+./arch.sh
+```
+
 ## Ubuntu/Debian
 
 run the commands below, line by line
@@ -42,6 +51,15 @@ nano ./token.txt
 # [Ctrl]+[Shift]+V to save the bot token
 # [Ctrl]+O to save the file
 python3 main.py
+```
+
+or run,
+
+```bash
+sudo apt install wget -y
+wget "https://raw.githubusercontent.com/hirusha-adi/Discord-Channel-Attacthment-Save/main/ubuntu.sh"
+chmod +x ./ubuntu.sh
+./ubuntu.sh
 ```
 
 ## Windows
