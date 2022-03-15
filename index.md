@@ -1,37 +1,91 @@
-## Welcome to GitHub Pages
+# Discord Channel Saver
 
-You can use the [editor on GitHub](https://github.com/hirusha-adi/Discord-Channel-Attacthment-Save/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+Save all messages and attachments sent in a channel using a simple discord bot
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+# Available Commands
 
-### Markdown
+## `help`
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+- Display help/command usage for this discord bot
 
-```markdown
-Syntax highlighted code block
+## `save [limit=9999]`
 
-# Header 1
-## Header 2
-### Header 3
+- Save all messages and attachments sent in the channel with the given limit. `limit` will default to 9999
 
-- Bulleted
-- List
+# Installing and Running
 
-1. Numbered
-2. List
+## Arch Linux
 
-**Bold** and _Italic_ and `Code` text
+run the commands below, line by line
 
-[Link](url) and ![Image](src)
+```bash
+sudo pacman -Syy install git nano python python-pip --noconfirm
+pip install discord -U
+git clone "https://github.com/hirusha-adi/Discord-Channel-Attacthment-Save.git"
+cd ./Discord-Channel-Attacthment-Save
+nano ./token.txt
+# [Ctrl]+[Shift]+V to save the bot token
+# [Ctrl]+O to save the file"
+python main.py
 ```
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+or run,
 
-### Jekyll Themes
+```bash
+sudo pacman -Syy wget --noconfirm
+wget "https://raw.githubusercontent.com/hirusha-adi/Discord-Channel-Attacthment-Save/main/arch.sh"
+chmod +x ./arch.sh
+./arch.sh
+```
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/hirusha-adi/Discord-Channel-Attacthment-Save/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+## Ubuntu/Debian
 
-### Support or Contact
+run the commands below, line by line
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+```bash
+sudo apt install git python3 python3-pip nano -y
+pip3 install discord -U
+git clone "https://github.com/hirusha-adi/Discord-Channel-Attacthment-Save.git"
+cd ./Discord-Channel-Attacthment-Save
+nano ./token.txt
+# [Ctrl]+[Shift]+V to save the bot token
+# [Ctrl]+O to save the file
+python3 main.py
+```
+
+or run,
+
+```bash
+sudo apt install wget -y
+wget "https://raw.githubusercontent.com/hirusha-adi/Discord-Channel-Attacthment-Save/main/ubuntu.sh"
+chmod +x ./ubuntu.sh
+./ubuntu.sh
+```
+
+## Windows
+
+1. Download and install Python3. Make sure to 'Add to PATH' when install python3
+
+![imagew1](https://www.tutorials24x7.com/uploads/2019-12-26/files/3-tutorials24x7-python-windows-install.png)
+
+2. Download the code as a .zip file from [this Github Reposotory](https://github.com/hirusha-adi/Discord-Channel-Attacthment-Save)
+
+![imagew2](https://cdn.discordapp.com/attachments/935515175073763398/937186561299197952/unknown.png)
+
+(this above image might not be the same)
+
+3. Extract the downloaded `.zip` file
+
+4. open `cmd` or `powershell` in that folder
+
+5. run the command below to install requirements
+
+```
+python -m pip install -U discord
+```
+
+6. run the command below to start the prorgam
+
+```
+python main.py
+```
